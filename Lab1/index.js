@@ -43,17 +43,7 @@ const addElement = () => {
 };
 
 // Required functions
-const getSum = (inputs) => {
-  let sum = 0;
-
-  inputs.forEach((input) => {
-    if (input) {
-      sum += input;
-    }
-  });
-
-  return sum;
-};
+const getSum = (inputs) => inputs.reduce((a, b) => a + b);
 
 const getAverage = (inputs) => {
   const arrayWithValues = inputs.filter((val) => val !== 0);
@@ -63,15 +53,12 @@ const getAverage = (inputs) => {
 // General functions
 const mapValues = (inputs) => {
   let values = Array(inputs.length).fill(0);
-
   inputs.forEach((input, index) => {
     const value = parseInt(input.value);
-
     if (value) {
       values[index] = value;
     }
   });
-
   return values;
 };
 
