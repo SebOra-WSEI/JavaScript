@@ -11,17 +11,26 @@
 <body>
   <div>
     <form onsubmit="return false;">
-      <input type="text" oninput="mainLogic()" />
-      <input type="text" oninput="mainLogic()" />
-      <input type="text" oninput="mainLogic()" />
-      <input type="text" oninput="mainLogic()" />
-      <button>Przelicz</button>
+      <div id="form-inputs">
+        <div style="margin-top: 0.5rem;">
+          <input type="text" oninput="mainLogic()" />
+        </div>
+        <div style="margin-top: 0.5rem;">
+          <input type="text" oninput="mainLogic()" />
+        </div>
+        <div style="margin-top: 0.5rem;">
+          <input type="text" oninput="mainLogic()" />
+        </div>
+      </div>
+      <!-- <input type="text" oninput="mainLogic()" /> -->
+      <button style="margin-top: 1rem;">Count</button>
     </form>
+    <div style="margin-top: 1rem;">
+      <button onclick="addElement()">Add new field</button>
+      <button onclick="removeUnusedFields()">Remove unused fields</button>
+    </div>
   </div>
   <div id="valuesBox">
-    <div id="displayedValues">
-
-    </div>
   </div>
 </body>
 
