@@ -11,15 +11,17 @@
 <body>
   <div>
     <form onsubmit="return false;">
-      <input type="text" />
-      <input type="text" />
-      <input type="text" />
-      <input type="text" />
-      <button>Submit</button>
+      <input type="text" oninput="mainLogic()" />
+      <input type="text" oninput="mainLogic()" />
+      <input type="text" oninput="mainLogic()" />
+      <input type="text" oninput="mainLogic()" />
+      <button>Przelicz</button>
     </form>
   </div>
-  <div id="displayedValues">
+  <div id="valuesBox">
+    <div id="displayedValues">
 
+    </div>
   </div>
 </body>
 
