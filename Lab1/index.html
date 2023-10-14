@@ -12,24 +12,28 @@
   <div>
     <form onsubmit="return false;">
       <div id="form-inputs">
-        <div style="margin-top: 0.5rem;">
-          <input type="text" oninput="mainLogic()" />
+        <div>
+          <input type="text" oninput="mainLogic()" style="margin-bottom: 0.5rem;" />
         </div>
-        <div style="margin-top: 0.5rem;">
-          <input type="text" oninput="mainLogic()" />
+        <div>
+          <input type="text" oninput="mainLogic()" style="margin-bottom: 0.5rem;" />
         </div>
-        <div style="margin-top: 0.5rem;">
-          <input type="text" oninput="mainLogic()" />
+        <div>
+          <input type="text" oninput="mainLogic()" style="margin-bottom: 0.5rem;" />
         </div>
       </div>
-      <button style="margin-top: 1rem;">Count</button>
+      <button style="margin-top: 1rem;" id="countButton">Count</button>
     </form>
     <div style="margin-top: 1rem;">
-      <button onclick="addElement()">Add new field</button>
-      <button onclick="removeUnusedFields()">Remove unused fields</button>
+      <button id="addFieldButton">Add new field</button>
+      <button id="removeFieldButton">Remove unused fields</button>
     </div>
   </div>
-  <div id="valuesBox">
+  <div style="margin-top: 1rem;">
+    <div id="sumDiv"></div>
+    <div id="avgDiv"></div>
+    <div id="minDiv"></div>
+    <div id="maxDiv"></div>
   </div>
 </body>
 

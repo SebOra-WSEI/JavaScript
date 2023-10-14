@@ -1,48 +1,44 @@
-const btn = document.querySelector("button");
+const countButton = document.querySelector("#countButton");
 const formInputs = document.querySelector("#form-inputs");
-const valuesBox = document.querySelector("#valuesBox");
+const addFieldButton = document.querySelector("#addFieldButton");
+const removeFieldButton = document.querySelector("#removeFieldButton");
+const sumDiv = document.querySelector("#sumDiv");
+const avgDiv = document.querySelector("#avgDiv");
+const minDiv = document.querySelector("#minDiv");
+const maxDiv = document.querySelector("#maxDiv");
+
+countButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  mainLogic();
+});
+
+addFieldButton.addEventListener("click", () => {
+  const div = document.createElement("div");
+  const input = document.createElement("input");
+
+  input.type = "text";
+  input.style = "margin-bottom: 0.5rem";
+  input.oninput = () => mainLogic();
+
+  div.append(input);
+  formInputs.appendChild(div);
+});
+
+removeFieldButton.addEventListener("click", () => {
+  const inputs = document.querySelectorAll("input");
+  inputs.forEach((input) => !input.value && input.remove());
+});
 
 const mainLogic = () => {
   const inputs = document.querySelectorAll("input");
   let values = mapValues(inputs);
 
-  createElement(valuesBox, `SUM: ${getSum(values)}`);
-  createElement(valuesBox, `AVG: ${getAverage(values)}`);
-  createElement(valuesBox, `MIN: ${Math.min(...values)}`);
-  createElement(valuesBox, `MAX: ${Math.max(...values)}`);
-  createElement(valuesBox, "------------------");
+  sumDiv.innerHTML = `SUM: ${getSum(values)}`;
+  avgDiv.innerHTML = `AVG: ${getAverage(values)}`;
+  minDiv.innerHTML = `MIN: ${Math.min(...values)}`;
+  maxDiv.innerHTML = `MAX: ${Math.max(...values)}`;
 };
 
-// Add listener for the submit button
-btn.addEventListener("click", function (event) {
-  event.preventDefault();
-  mainLogic();
-});
-
-const removeUnusedFields = () => {
-  const inputs = document.querySelectorAll("input");
-
-  inputs.forEach((input, index) => {
-    if (!input.value) {
-      formInputs.removeChild(formInputs.children[index]);
-    }
-  });
-};
-
-// Add additional input with provided properties
-const addElement = () => {
-  const div = document.createElement("div");
-  div.style = "margin-top: 0.5rem;";
-
-  const input = document.createElement("input");
-  input.type = "text";
-  input.oninput = () => mainLogic();
-
-  div.appendChild(input);
-  formInputs.append(div);
-};
-
-// Required functions
 const getSum = (inputs) => inputs.reduce((a, b) => a + b);
 
 const getAverage = (inputs) => {
@@ -50,7 +46,6 @@ const getAverage = (inputs) => {
   return arrayWithValues.length ? getSum(inputs) / arrayWithValues.length : 0;
 };
 
-// General functions
 const mapValues = (inputs) => {
   let values = Array(inputs.length).fill(0);
   inputs.forEach((input, index) => {
@@ -60,10 +55,4 @@ const mapValues = (inputs) => {
     }
   });
   return values;
-};
-
-const createElement = (valuesBox, text) => {
-  const element = document.createElement("p");
-  element.textContent = text;
-  valuesBox.appendChild(element);
 };
