@@ -35,7 +35,7 @@ const mainLogic = () => {
 
   sumDiv.innerHTML = `SUM: ${getSum(values)}`;
   avgDiv.innerHTML = `AVG: ${getAverage(values)}`;
-  minDiv.innerHTML = `MIN: ${Math.min(...values)}`;
+  minDiv.innerHTML = `MIN: ${getMin(values)}`;
   maxDiv.innerHTML = `MAX: ${Math.max(...values)}`;
 };
 
@@ -46,8 +46,13 @@ const getAverage = (inputs) => {
   return arrayWithValues.length ? getSum(inputs) / arrayWithValues.length : 0;
 };
 
+const getMin = (inputs) => {
+  const values = inputs.filter((val) => val !== 0);
+  return values.length ? Math.min(...values) : 0;
+};
+
 const mapValues = (inputs) => {
-  let values = Array(inputs.length).fill(0);
+  const values = Array(inputs.length).fill(0);
   inputs.forEach((input, index) => {
     const value = parseInt(input.value);
     if (value) {
