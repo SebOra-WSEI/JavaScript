@@ -4,9 +4,16 @@ const images = document.querySelectorAll("#sliderImage");
 const dots = document.querySelectorAll("#dot");
 const prev = document.querySelector("#prev");
 const next = document.querySelector("#next");
+const pauseBtn = document.querySelector("#pauseBtn");
+const playBtn = document.querySelector("#playBtn");
+const realoadBtn = document.querySelector("#realoadBtn");
 
 mainLogic(POSITION);
-addText();
+
+const dynamicSlider = setInterval(() => {
+  POSITION++;
+  mainLogic(POSITION);
+}, 2000);
 
 prev.addEventListener("click", () => {
   POSITION -= 1;
@@ -18,7 +25,26 @@ next.addEventListener("click", () => {
   mainLogic(POSITION);
 });
 
+pauseBtn.addEventListener("click", () => {
+  clearInterval(dynamicSlider);
+  pauseBtn.disabled = true;
+  playBtn.disabled = false;
+});
+
+playBtn.addEventListener("click", () => {
+  setInterval(() => {
+    POSITION++;
+    mainLogic(POSITION);
+  }, 2000);
+
+  playBtn.disabled = true;
+});
+
+realoadBtn.addEventListener("click", () => window.location.reload());
+
 function mainLogic(n) {
+  addText();
+
   if (n > images.length) {
     POSITION = 1;
   }
