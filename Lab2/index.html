@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab2</title>
+  <link rel="stylesheet" href="index.css">
+  <script src="./index.js" defer></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="fadeAnimation" id="sliderImage">
+      <img
+        src="https://images.unsplash.com/photo-1532339142463-fd0a8979791a?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+    </div>
+    <div class="fadeAnimation" id="sliderImage">
+      <img
+        src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+    </div>
+    <div class="fadeAnimation" id="sliderImage">
+      <img
+        src="https://images.unsplash.com/photo-1487730116645-74489c95b41b?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+    </div>
+    <div class="fadeAnimation" id="sliderImage">
+      <img
+        src="https://images.unsplash.com/photo-1492648272180-61e45a8d98a7?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D">
+    </div>
+    <a class="prev" id="prev">&#10094;</a>
+    <a class="next" id="next">&#10095;</a>
+  </div>
+  <br>
+  <div class="dots">
+    <span class="dot" id="dot" onclick="displayImageByDot(1)"></span>
+    <span class="dot" id="dot" onclick="displayImageByDot(2)"></span>
+    <span class="dot" id="dot" onclick="displayImageByDot(3)"></span>
+    <span class="dot" id="dot" onclick="displayImageByDot(4)"></span>
+  </div>
+</body>
+
+</html>
