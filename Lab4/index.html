@@ -15,27 +15,27 @@
 
   <div id="note_template" hidden>
     <div class="note-header">
-      <p name="note-title" id="note-title"></p>
+      <p id="note-title"></p>
       <div>
         <button id="deleteNote">X</button>
       </div>
     </div>
     <div>
-      <p name="note-content" id="note-content"></p>
+      <p id="note-content"></p>
       <p id="note-date"></p>
     </div>
   </div>
 
   <div id="note_creator">
     <div>
-      <input type="text" name="note_title" placeholder="Title">
+      <input type="text" id="note_title_creator" placeholder="Title">
     </div>
-    <textarea name="note_content" id="note_content" placeholder="Content"></textarea>
+    <textarea id="note_content_creator" placeholder="Content"></textarea>
     <div class="actions">
       <div>
-        <input type="color" name="note_color" id="note_color">
+        <input type="color" id="note_color">
       </div>
-      <input type="button" id="addBtn" name="save_note" value="Add">
+      <input type="button" id="addBtn" value="Add">
     </div>
   </div>
 </body>

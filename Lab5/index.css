@@ -1,0 +1,37 @@
+#container {
+  display: flex;
+  margin-top: 2rem;
+}
+
+#ballCount {
+  margin-bottom: 1rem;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  padding: 0.5rem;
+}
+
+#fps {
+  margin-left: 1rem;
+  padding-bottom: 0.5rem;
+}
+
+button {
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  padding: 0.5rem;
+  border-radius: 10px;
+}
+
+#startBtn {
+  background-color: green;
+  color: #fff;
+  cursor: pointer;
+}
+
+#resetBtn {
+  margin-left: 0.5rem;
+  background-color: red;
+  color: #fff;
+  cursor: pointer;
+}

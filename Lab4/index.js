@@ -41,16 +41,16 @@ function createNote() {
   let creator = document.getElementById('note_creator');
 
   let note = {
-    title: creator.querySelector('input[name=note_title]').value,
-    content: creator.querySelector('textarea[name=note_content]').value,
-    color: creator.querySelector('input[name=note_color]').value,
+    title: creator.querySelector('#note_title_creator').value,
+    content: creator.querySelector('#note_content_creator').value,
+    color: creator.querySelector('#note_color').value,
     timestamp: Date.now(),
   }
 
-  notes.push(note)
+  notes.push(note);
 
-  saveNotes()
-  displayNotes()
+  saveNotes();
+  displayNotes();
 }
 
 function deleteNote(title) {
@@ -60,7 +60,7 @@ function deleteNote(title) {
 }
 
 notes = loadNotes();
-document.querySelector('input[name=note_color]').value = defaultNoteColor
-document.querySelector('input[name=save_note]').addEventListener('click', createNote);
+document.querySelector('#note_color').value = defaultNoteColor
+document.querySelector('#addBtn').addEventListener('click', createNote);
 
 displayNotes();
