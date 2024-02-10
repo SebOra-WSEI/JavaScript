@@ -2,12 +2,12 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Drumkit</title>
-  <script src="./index.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
   <link rel="stylesheet" href="./index.css" />
+  <script src="./index.js" defer></script>
 </head>
 
 <body>
@@ -21,12 +21,14 @@
   <audio src="./sounds/tom.wav" id="tom"></audio>
   <audio src="./sounds/tink.wav" id="tink"></audio>
 
-  <div>
-    <button class="recordBtn" id="recordBtn">Record</button>
-  </div>
-  <div>
-    Here are your recordings. Click to play:
-    <ul class="records"></ul>
+  <div id="main">
+    <div class="buttonrec">
+      <button id="record">Record</button>
+    </div>
+    <div>
+      <p>Your records</p>
+      <ul class="records"></ul>
+    </div>
   </div>
 </body>
 

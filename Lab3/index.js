@@ -1,93 +1,81 @@
-document.addEventListener('keypress', onKeyPress);
-
-const recordBtn = document.querySelector("#recordBtn");
-recordBtn.addEventListener('click', record)
-
+let recordedTracks = [];
 let isRecording = false;
-let index = 1;
-let actualRecords = [];
-let recorded = [];
+let currentRecord = [];
 
-const keys = new Map();
-keys.set("q", "boom");
-keys.set("w", "tom");
-keys.set("e", "hihat");
-keys.set("r", "kick");
-keys.set("t", "openhat");
-keys.set("y", "ride");
-keys.set("u", "snare");
-keys.set("i", "clap");
-keys.set("o", "tink");
+const allowedKeys = new Map();
+allowedKeys.set('q', "boom");
+allowedKeys.set('w', "tom");
+allowedKeys.set('e', "hihat");
+allowedKeys.set('r', "kick");
+allowedKeys.set('t', "openhat");
+allowedKeys.set('y', "ride");
+allowedKeys.set('u', "snare");
+allowedKeys.set('i', "clap");
+allowedKeys.set('o', "tink");
 
-const showRecords = () => {
-  const recordsList = document.querySelector('.records');
+document.addEventListener('keypress', (e) => {
+  const key = e.key;
+  const sound = allowedKeys.get(key);
 
-  recorded.map(r => {
-    const div = document.createElement('div');
-    const btn = document.createElement('button');
-    const li = document.createElement('li');
+  if (!sound) {
+    alert('Allowed keys: q,w,e,r,t,y,u,i,o');
+    return;
+  }
 
-    li.textContent = r.text;
-    li.id = 'recorded'
-    btn.textContent = "Play"
-    btn.className = "playBtn";
-    btn.addEventListener('click', () => {
-      r.sound.forEach(s => {
-        playSound(s);
-        setInterval(() => {
-          playSound(s);
-        }, 500);
-      });
-    });
-
-    li.appendChild(btn);
-    div.appendChild(li);
-
-    recordsList.appendChild(li);
+  isRecording && currentRecord.push({
+    key: sound,
+    timestamp: Date.now()
   });
-}
+  playSound(sound);
+});
 
-const playSound = (sound) => {
-  const audioTag = document.querySelector(`#${sound}`);
+function playSound(sound) {
+  const audioTag = document.getElementById(sound);
   audioTag.currentTime = 0;
   audioTag.play();
 }
 
-function record() {
-  isRecording = !isRecording;
+function playRecord(record) {
+  record.forEach(({ key, timestamp }) => {
+    setTimeout(() => {
+      playSound(key);
+    }, timestamp - record[0].timestamp);
+  });
+}
 
-  const recording = () => {
-    recordBtn.textContent = 'Stop Recording';
-    recordBtn.classList.add('recording');
-  }
+function showRecords() {
+  const recordsList = document.querySelector('.records');
+  recordsList.innerHTML = '';
 
-  const notRecording = () => {
-    recordBtn.textContent = 'Record';
-    recordBtn.classList.remove('recording');
-    recorded.push({
-      text: `Record ${index}`,
-      sound: actualRecords
+  recordedTracks.forEach((record, index) => {
+    const li = document.createElement('li');
+    const btn = document.createElement('button');
+    li.className = 'records';
+    li.textContent = `Record ${index + 1}`;
+
+    btn.textContent = 'Play';
+    btn.className = 'play';
+    btn.addEventListener('click', () => {
+      playRecord(record);
     });
 
-    index++;
-    actualRecords = [];
+    li.appendChild(btn);
+    recordsList.appendChild(li);
+  });
+}
 
+const recordButton = document.querySelector('#record');
+recordButton.addEventListener('click', () => {
+  isRecording = !isRecording;
+
+  const notRecording = () => {
+    recordButton.textContent = 'Record';
+    recordedTracks.push(currentRecord);
+    currentRecord = [];
     showRecords();
   }
 
-  isRecording ? recording() : notRecording()
-};
-
-function onKeyPress(evt) {
-  const key = evt.key;
-  const sound = keys.get(key);
-
-  if (sound === undefined) {
-    alert(`Key "${key}" not defined`);
-    return;
-  }
-
-  isRecording && actualRecords.push(sound)
-
-  playSound(sound)
-}
+  isRecording
+    ? recordButton.textContent = 'Stop Recording'
+    : notRecording()
+});
